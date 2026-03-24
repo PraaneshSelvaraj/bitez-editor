@@ -91,7 +91,31 @@ Contributions are what make the open-source community an amazing place to learn,
 
 Please check [CONTRIBUTING.md](./CONTRIBUTING.md) for detailed guidelines.
 
----
+## �️ Development Setup
+
+This project uses `pnpm` for package management.
+
+### Setup
+
+```bash
+pnpm install
+```
+
+### Build Library
+
+```bash
+pnpm run build:lib
+```
+
+### Run Playground
+
+To test your changes in a real React application:
+
+```bash
+cd playground
+pnpm install
+pnpm dev
+```
 
 ## 📄 License
 

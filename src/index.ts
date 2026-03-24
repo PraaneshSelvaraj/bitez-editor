@@ -1,4 +1,5 @@
 // Core Components
+import './index.css';
 export { EditorProvider } from './context/EditorContext';
 export { useEditor } from './hooks/useEditor';
 export { Editor } from './components/Editor';

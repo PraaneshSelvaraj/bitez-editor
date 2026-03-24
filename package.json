@@ -1,23 +1,31 @@
 {
   "name": "bitez-editor",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A high-performance, modular writing engine for authors. Extensible, reliable, and fast.",
   "private": false,
-  "main": "dist/bitez-editor.umd.cjs",
-  "module": "dist/bitez-editor.js",
-  "types": "dist/index.d.ts",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/bitez-editor.umd.cjs",
+  "module": "./dist/bitez-editor.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/bitez-editor.js",
+      "require": "./dist/bitez-editor.umd.cjs"
+    },
+    "./style.css": "./dist/bitez-editor.css"
+  },
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "build:lib": "VITE_BUILD_MODE=lib vite build",
+    "dev": "pnpm -C playground dev",
+    "build": "tsc -b && VITE_BUILD_MODE=lib vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "pnpm -C playground preview"
   },
   "dependencies": {
-    "lucide-react": "^0.577.0",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4"
+    "lucide-react": "^0.577.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
@@ -29,8 +37,15 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.4.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.56.1",
-    "vite": "^8.0.0"
+    "vite": "^8.0.0",
+    "vite-plugin-dts": "^4.5.4"
+  },
+  "peerDependencies": {
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   }
 }

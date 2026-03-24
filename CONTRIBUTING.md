@@ -17,7 +17,7 @@ Whether you're fixing a bug, improving the UI, or adding a new plugin, we're gla
    ```bash
    pnpm dev
    ```
-   This will start a demo application that lives in `src/App.tsx`.
+   This will start the playground application located in `playground/`.
 
 ---
 
@@ -38,7 +38,7 @@ A plugin should be focused on one single author need (e.g. "Focus Mode", "Word C
 1.  Create a file in `src/plugins/MyNewPlugin.tsx`.
 2.  Define the `meta` information (ID, name, description).
 3.  Implement the `render` function as a React component.
-4.  **Register it** in `src/main.tsx` for the demo app, or export it from `src/index.ts`.
+4.  **Register it** in `playground/src/App.tsx` to test it, and export it from `src/index.ts`.
 5.  **Use Persistent State**: Use the `useEditor` hook's `updatePluginConfig` to save your plugin's data.
 
 ---

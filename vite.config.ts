@@ -1,12 +1,18 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-
-// https://vite.dev/config/
+import dts from 'vite-plugin-dts'
 import { resolve } from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    process.env.VITE_BUILD_MODE === 'lib' && dts({
+      insertTypesEntry: true,
+      tsconfigPath: './tsconfig.app.json',
+      rollupTypes: true
+    })
+  ],
   build: {
     lib: process.env.VITE_BUILD_MODE === 'lib' ? {
       entry: resolve(__dirname, 'src/index.ts'),
@@ -15,11 +21,12 @@ export default defineConfig({
       formats: ['es', 'umd']
     } : undefined,
     rollupOptions: {
-      external: process.env.VITE_BUILD_MODE === 'lib' ? ['react', 'react-dom', 'lucide-react'] : [],
+      external: process.env.VITE_BUILD_MODE === 'lib' ? ['react', 'react-dom', 'react/jsx-runtime', 'lucide-react'] : [],
       output: {
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
+          'react/jsx-runtime': 'jsxRuntime',
           'lucide-react': 'Lucide'
         }
       }
